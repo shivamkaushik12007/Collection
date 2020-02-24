@@ -2,10 +2,41 @@ package com.project;
 
 public class LinkedList<T> implements List<T> {
     private Node<T> head;
+    int size=0;
 
-   //to add the  element at end of the list
+    //to check whether the linked list is empty or not
+    public boolean isEmpty(){
+        if(this.head==null)
+            return true;
+        return false;
+    }
+
+
+    //to return the size of the linked list
+    public int size(){
+        return this.size;
+    }
+
+    //to check whether the value is present in linked list or not
+    public boolean contains(T val){
+        return contains(head, val);
+    }
+
+
+    private boolean contains(Node<T> head, T val){
+        while(head!=null){
+            if(head.val==val)
+                return true;
+            head=head.next;
+        }
+        return false;
+    }
+
+
+    //to add the  element at end of the list
     public void add(T val) {
         head=add(head,val);
+        this.size++;
     }
 
 
@@ -27,7 +58,7 @@ public class LinkedList<T> implements List<T> {
 
     private void add(Node<T> head,int index,T val){
         Node<T> n=new Node(val);
-
+        this.size++;
         if(index==0){
             n.next=head;
             this.head=n;
@@ -60,6 +91,7 @@ public class LinkedList<T> implements List<T> {
         if(temp==null)
             return;
 
+        this.size--;
         if(temp.next==null){
             this.head=null;
             return;
@@ -85,6 +117,7 @@ public class LinkedList<T> implements List<T> {
     private void remove(Node<T> head,int index){
         if(index==0){
             this.head=head.next;
+            this.size--;
             return;
         }
 
@@ -101,22 +134,38 @@ public class LinkedList<T> implements List<T> {
             System.out.println("List index out of bound element can not be deleted");
             return;
         }
-
+        this.size--;
         temp.next=temp.next.next;
     }
 
+
+    //to get the element from list
+    public T get(int index){
+        return get(head,index);
+    }
+
+    private T get(Node<T> head,int index){
+//        if(index>=this.size){
+//            System.out.println("index out of bound element cannot be retrieved");
+//            return T;
+//        }
+        for(int i=0;i<index;i++){
+            head=head.next;
+        }
+        return head.val;
+    }
 //  for testing purposes!
-//    public void print(){
-//        Node<T> temp=head;
-//        if(head==null){
-//            System.out.println("empty list");
-//            return;
-//        }
-//        while(temp!=null){
-//            System.out.print(temp.val+" ");
-//            temp=temp.next;
-//        }
-//    }
+    public void print(){
+        Node<T> temp=head;
+        if(head==null){
+            System.out.println("empty list");
+            return;
+        }
+        while(temp!=null){
+            System.out.print(temp.val+" ");
+            temp=temp.next;
+        }
+    }
 
 
     private static class Node<T>{
