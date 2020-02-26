@@ -6,6 +6,7 @@ public class Main {
 	// write your code here
         LinkedList<Integer> l=new LinkedList<>();
         System.out.println(l.isEmpty());
+//        System.out.println(l.get(3));
         l.add(1);
         l.add(2);
         System.out.println(l.contains(10));

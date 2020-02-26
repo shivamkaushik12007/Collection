@@ -145,10 +145,10 @@ public class LinkedList<T> implements List<T> {
     }
 
     private T get(Node<T> head,int index){
-//        if(index>=this.size){
-//            System.out.println("index out of bound element cannot be retrieved");
-//            return T;
-//        }
+        if(index>=this.size){
+            System.out.println("index out of bound element cannot be retrieved");
+            return null;
+        }
         for(int i=0;i<index;i++){
             head=head.next;
         }
