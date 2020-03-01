@@ -31,7 +31,22 @@ public class LinkedList<T> implements List<T> {
         }
         return false;
     }
+//     @Override
+//     public Iterator<Integer> iterator() {
+//         return new Iterator<Integer>(){
+//             private Node temp=head;
+//             @Override
+//             public boolean hasNext(){
+//                 return temp!=null;
+//             }
 
+//             public Integer next(){
+//                 int t=temp.key;
+//                 temp=temp.next;
+//                 return t;
+//             }
+//         };
+//     }
 
     //to add the  element at end of the list
     public void add(T val) {
